@@ -7,8 +7,8 @@ theme:
     - navigation.sections
     - toc.follow
     - navigation.top
-    - content.code.copy
-    - content.code.select
+    - content.code.copy    # 启用代码块复制按钮
+    - content.code.select  # 启用代码块选择功能
 
   name: material
   language: zh 
