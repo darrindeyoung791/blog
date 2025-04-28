@@ -1,4 +1,10 @@
 site_name: Darrin DeYoung 的笔记本
+site_url: https://darrindeyoung791.github.io/blog/
+repo_name: darrindeyoung791/blog
+repo_url: https://github.com/darrindeyoung791/blog/
+site_description: Darrin DeYoung 的笔记本
+copyright: Copyright &copy; 2025 <a href="https://github.com/darrindeyoung791" target="_blank" rel="noopener">darrindeyoung791</a> 
+
 theme:
   features:
     - navigation.instant
