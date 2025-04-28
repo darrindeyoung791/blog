@@ -33,7 +33,18 @@ mkdocs serve
 
 ## 部署
 
-构建静态文件:
+### GitHub Pages 自动部署
+
+本站点使用 GitHub Actions 自动部署到 GitHub Pages。每次推送到 main 分支时会自动触发部署流程。
+
+具体步骤：
+1. 推送代码到 main 分支
+2. GitHub Actions 自动运行部署工作流
+3. 部署完成后可访问 https://[username].github.io/blog
+
+### 手动构建
+
+如需本地构建：
 
 ```bash 
 mkdocs build
