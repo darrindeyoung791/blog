@@ -3,7 +3,7 @@ site_url: https://darrindeyoung791.github.io/blog/
 repo_name: darrindeyoung791/blog
 repo_url: https://github.com/darrindeyoung791/blog/
 site_description: Darrin DeYoung 的笔记本
-copyright: Copyright &copy; 2025 <a href="https://github.com/darrindeyoung791" target="_blank" rel="noopener">darrindeyoung791</a> 
+copyright: Copyright &copy; 2025 <a href="https://github.com/darrindeyoung791" target="_blank" rel="noopener">darrindeyoung791</a> <br> 如无特殊说明，本站全部内容在 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" rel="noopener">CC-BY-SA 4.0</a> 协议之条款下提供
 
 theme:
   features:
@@ -11,10 +11,11 @@ theme:
     - navigation.instant.progress
     - navigation.tabs
     - navigation.sections
-    - toc.follow
+    - navigation.footer
     - navigation.top
-    - content.code.copy    # 启用代码块复制按钮
-    - content.code.select  # 启用代码块选择功能
+    - toc.follow
+    - content.code.copy
+    - content.code.select
 
   name: material
   language: zh 
@@ -36,9 +37,16 @@ theme:
         icon: material/brightness-4
         name: 切换到浅色模式
 
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/darrindeyoung791
+
 markdown_extensions:
+  - admonition
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span

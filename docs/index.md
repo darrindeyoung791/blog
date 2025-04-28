@@ -54,7 +54,7 @@ def hello_world():
 
 | 姓名 | 年龄 | 城市 |
 |------|------|------|
-| 张三 | 25   | 北京 |
+| 张三 | 25   | 广州 |
 | 李四 | 28   | 上海 |
 
 ### 5. 链接和图片
@@ -65,12 +65,16 @@ def hello_world():
 
 ### 6. 数学公式
 
+???+ note "注意"
+
+    在 MathJax 中，换行符 `\\` 会被转义，故需要使用转义后的 `\\\\` 来换行公式
+
 行内公式：$E = mc^2$
 
 行间公式：
 $$
 \begin{aligned}
-\frac{\partial f}{\partial x} &= 2x + y \\
+\frac{\partial f}{\partial x} &= 2x + y \\\\
 \frac{\partial f}{\partial y} &= x + 2y
 \end{aligned}
 $$
@@ -78,8 +82,8 @@ $$
 复杂公式：
 $$
 \begin{cases}
-x = r\cos\theta \\
-y = r\sin\theta \\
+x = r\cos\theta \\\\
+y = r\sin\theta \\\\
 z = r\tan\phi
 \end{cases}
 $$
@@ -87,8 +91,8 @@ $$
 矩阵：
 $$
 \begin{bmatrix}
-1 & 2 & 3 \\
-4 & 5 & 6 \\
+1 & 2 & 3 \\\\
+4 & 5 & 6 \\\\
 7 & 8 & 9
 \end{bmatrix}
 $$
