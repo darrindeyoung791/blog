@@ -9,10 +9,10 @@
 
 ## 安装
 
-1. 安装 MkDocs 和 Material 主题:
+1. 安装所有依赖:
 
 ```bash
-pip install mkdocs-material
+pip install -r requirements.txt
 ```
 
 2. 克隆此仓库:
