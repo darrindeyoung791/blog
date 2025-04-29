@@ -57,6 +57,8 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
@@ -81,16 +83,12 @@ nav:
       - 示例文本: home/sample.md
   - 编程笔记:
       - 概览: programming/index.md
-      - 后端开发: 
-          - 概览: programming/backend/index.md
-      - 前端开发: 
-          - 概览: programming/frontend/index.md
-      - 数据库: 
-          - 概览: programming/database/index.md
   - 工具笔记:
-      - 概览: tools/index.md
       - 开发工具: 
-          - 概览: tools/dev/index.md
+          - Git基础备忘:
+              - 简介: tools/dev/git/index.md
+              - Git 基础备忘: tools/dev/git/basic.md
+              - ssh 连接 GitHub: tools/dev/git/ssh.md
       - 效率工具: 
           - 概览: tools/efficiency/index.md
   - 学习笔记:
