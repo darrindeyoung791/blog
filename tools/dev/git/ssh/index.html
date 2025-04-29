@@ -10,24 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://darrindeyoung791.github.io/blog/tools/">
+        <link rel="canonical" href="https://darrindeyoung791.github.io/blog/tools/dev/git/ssh/">
       
       
+        <link rel="prev" href="../basic/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+        <link rel="next" href="../../../efficiency/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>工具使用笔记 - Darrin DeYoung 的笔记本</title>
+        <title>ssh 连接 GitHub - Darrin DeYoung 的笔记本</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#git-ssh-github" class="md-skip">
           跳转至
         </a>
       
@@ -86,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Darrin DeYoung 的笔记本" class="md-header__button md-logo" aria-label="Darrin DeYoung 的笔记本" data-md-component="logo">
+    <a href="../../../.." title="Darrin DeYoung 的笔记本" class="md-header__button md-logo" aria-label="Darrin DeYoung 的笔记本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              工具使用笔记
+              ssh 连接 GitHub
             
           </span>
         </div>
@@ -219,7 +223,7 @@
     
     
       <li class="md-tabs__item">
-        <a href=".." class="md-tabs__link">
+        <a href="../../../.." class="md-tabs__link">
           
   
   
@@ -239,7 +243,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../programming/" class="md-tabs__link">
+        <a href="../../../../programming/" class="md-tabs__link">
           
   
   
@@ -255,6 +259,8 @@
   
   
   
+    
+  
   
     
     
@@ -262,6 +268,8 @@
   
   
   
+    
+  
   
     
     
@@ -269,11 +277,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="dev/git/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -299,7 +309,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../notes/" class="md-tabs__link">
+        <a href="../../../../notes/" class="md-tabs__link">
           
   
   
@@ -317,7 +327,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../about/" class="md-tabs__link">
+      <a href="../../../../about/" class="md-tabs__link">
         
   
   
@@ -352,7 +362,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Darrin DeYoung 的笔记本" class="md-nav__button md-logo" aria-label="Darrin DeYoung 的笔记本" data-md-component="logo">
+    <a href="../../../.." title="Darrin DeYoung 的笔记本" class="md-nav__button md-logo" aria-label="Darrin DeYoung 的笔记本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -425,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -448,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../home/sample/" class="md-nav__link">
+      <a href="../../../../home/sample/" class="md-nav__link">
         
   
   
@@ -521,7 +531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/" class="md-nav__link">
+      <a href="../../../../programming/" class="md-nav__link">
         
   
   
@@ -548,26 +558,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -580,7 +595,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             工具笔记
@@ -591,26 +606,31 @@
                 
   
   
+    
   
   
+  
     
     
     
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
             
   
   
@@ -623,7 +643,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             开发工具
@@ -634,8 +654,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -646,11 +668,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" checked>
         
           
           <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
@@ -666,7 +688,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1_1">
             <span class="md-nav__icon md-icon"></span>
             Git基础备忘
@@ -680,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="dev/git/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -703,7 +725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="dev/git/basic/" class="md-nav__link">
+      <a href="../basic/" class="md-nav__link">
         
   
   
@@ -723,10 +745,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="dev/git/ssh/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ssh 连接 GitHub
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -737,6 +781,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0x00-ssh-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      0x00 配置 SSH key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0x01-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      0x01 获得并复制 SSH 公钥内容
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0x02-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      0x02 在 Github 设置中输入公钥
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -771,17 +862,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
             
   
   
@@ -808,7 +902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="efficiency/" class="md-nav__link">
+      <a href="../../../efficiency/" class="md-nav__link">
         
   
   
@@ -889,7 +983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../notes/" class="md-nav__link">
+      <a href="../../../../notes/" class="md-nav__link">
         
   
   
@@ -955,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../notes/reading/" class="md-nav__link">
+      <a href="../../../../notes/reading/" class="md-nav__link">
         
   
   
@@ -1029,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../notes/research/" class="md-nav__link">
+      <a href="../../../../notes/research/" class="md-nav__link">
         
   
   
@@ -1067,7 +1161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../../../about/" class="md-nav__link">
         
   
   
@@ -1109,9 +1203,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#0x00-ssh-key" class="md-nav__link">
     <span class="md-ellipsis">
-      分类
+      0x00 配置 SSH key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0x01-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      0x01 获得并复制 SSH 公钥内容
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0x02-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      0x02 在 Github 设置中输入公钥
     </span>
   </a>
   
@@ -1136,14 +1248,51 @@
   
 
 
-<h1 id="_1">工具使用笔记</h1>
-<p>这里记录各种开发工具的使用方法和技巧。</p>
-<h2 id="_2">分类</h2>
-<ul>
-<li>开发工具</li>
-<li>效率工具</li>
-<li>环境配置</li>
-</ul>
+<h1 id="git-ssh-github">Git 使用 SSH 连接 GitHub</h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>大部分情况下，我们能直接访问 <a href="https://github.com">GitHub</a>，但大部分情况出现的概率很低。此时即便设法让浏览器能够正确访问 GitHub，git 却没办法连接 GitHub。使用 SSH 连接 GitHub 可以解决此类问题。</p>
+<p>本文参考了 https://zhuanlan.zhihu.com/p/688103044 以及 https://blog.csdn.net/problc/article/details/144365441 的内容。</p>
+</div>
+<h2 id="0x00-ssh-key">0x00 配置 SSH key</h2>
+<p>打开 Git Bash。</p>
+<p><img alt="git-bash-in-windows-search-result" src="C:\Users\ricky\source\blog\docs\img\git-bash-in-windows-search-result.png" /></p>
+<p>先输入下面的指令查看有没有已经创建的 SSH key</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/.ssh
+</span></code></pre></div></td></tr></table></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">如果报错 <code>no such file or directory</code></label><label for="__tabbed_1_2">如果没有报错并进入了 <code>/ssh</code> 目录</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>这是因为这台电脑上没有生成过 SSH key，使用下面指令生成 SSH key：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;xxx@xxx.com&quot;</span><span class="w">  </span>//<span class="w"> </span>将<span class="w"> </span><span class="s2">&quot;xxx@xxx.com&quot;</span><span class="w"> </span>替换为你自己GitHub的邮箱地址
+</span></code></pre></div></td></tr></table></div>
+<p>随后一直按 <span class="keys"><kbd class="key-enter">Enter</kbd></span> 直到密钥的 randomart image 出来为止。</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>这里是把 ssh passphrase 留空了。根据实际需要考虑要不要设置。</p>
+</details>
+</div>
+<div class="tabbed-block">
+<p>这台电脑上已生成过 SSH key，进入下一步。</p>
+</div>
+</div>
+</div>
+<h2 id="0x01-ssh">0x01 获得并复制 SSH 公钥内容</h2>
+<p>还是在 Git Bash 终端，输入下列指令：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/.ssh
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>cat<span class="w"> </span>id_rsa.pub
+</span></code></pre></div></td></tr></table></div>
+<p>此时会看到 SSH 公钥内容，格式如下：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>ssh-rsa AA1AB2BB3CC4CD5DD……XX6XY7YY8ZZ9Z &lt;你的邮箱地址&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>用鼠标选择自 <code>ssh-rsa</code> 起至邮箱地址止（也就是全部内容）后右键（copy）复制。</p>
+<h2 id="0x02-github">0x02 在 Github 设置中输入公钥</h2>
+<p>访问 <a href="https://github.com/settings/keys">Github 的 SSH and GPG keys</a> 设置页面，点击“New SSH ”按钮。</p>
+<p><img alt="add-ssh-key-in-github-key-settings" src="C:\Users\ricky\source\blog\docs\img\add-ssh-key-in-github-key-settings.png" /></p>
+<p>在 Title 处随便取个名字，然后在 Key 处粘贴之前复制的公钥，最后点 Add SSH key。</p>
+<p><img alt="add-new-ssh-key-in-github" src="C:\Users\ricky\source\blog\docs\img\add-new-ssh-key-in-github.png" /></p>
+<p>[等待完成修改为443端口的内容]</p>
 
 
 
@@ -1166,7 +1315,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年4月29日 14:25:21">2025年4月29日 14:25:21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年4月29日 20:25:28">2025年4月29日 20:25:28</span>
   </span>
 
     
@@ -1176,7 +1325,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年4月29日 14:25:21">2025年4月29日 14:25:21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年4月29日 20:25:28">2025年4月29日 20:25:28</span>
   </span>
 
     
@@ -1206,6 +1355,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../basic/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Git 基础备忘">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Git 基础备忘
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../efficiency/" class="md-footer__link md-footer__link--next" aria-label="下一页: 概览">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                概览
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -1253,12 +1440,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.sections", "navigation.footer", "navigation.top", "toc.follow", "content.code.copy", "content.code.select"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
