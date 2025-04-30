@@ -137,5 +137,3 @@ Hi darrindeyoung791! You've successfully authenticated, but GitHub does not prov
 git config --global url."ssh://git@ssh.github.com:443".insteadOf "ssh://git@github.com"
 ```
 
----
-本文完。
