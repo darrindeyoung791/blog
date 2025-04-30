@@ -1,17 +1,11 @@
 # 欢迎访问 Darrin DeYoung 的笔记本
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+CS 和 Web 初学者的个人学习实践项目，存放一些自用笔记和文档。
 
-## Commands
+如果内容有用，欢迎给这个项目点 star 🤗🤗。
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+???+ note
 
-## Project layout
+    按 ++/++ 搜索想要的内容。
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+如无特殊说明，本站全部内容在 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" rel="noopener">CC-BY-SA 4.0</a> 协议之条款下提供。
