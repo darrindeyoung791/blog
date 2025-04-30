@@ -88,7 +88,7 @@ nav:
           - Git基础备忘:
               - 简介: tools/dev/git/index.md
               - Git 基础备忘: tools/dev/git/basic.md
-              - ssh 连接 GitHub: tools/dev/git/ssh.md
+              - SSH 连接 GitHub: tools/dev/git/ssh.md
       - 效率工具: 
           - 概览: tools/efficiency/index.md
   - 学习笔记:
