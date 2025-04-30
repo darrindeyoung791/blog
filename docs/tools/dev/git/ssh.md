@@ -52,14 +52,14 @@ cat id_rsa.pub
 此时会看到 SSH 公钥内容，格式如下：
 
 ```
-ssh-rsa AA1AB2BB3CC4CD5DD……XX6XY7YY8ZZ9Z <你的邮箱地址>
+ssh-rsa AA1AB2BB3CC4CD5DD……XX6XY7YY8ZZ9Z darrindeyoung@example.com
 ```
 
 用鼠标选择自 `ssh-rsa` 起至邮箱地址止（也就是全部内容）后右键（copy）复制。
 
 ## 0x02 在 Github 设置中输入公钥
 
-访问 [Github 的 SSH and GPG keys](https://github.com/settings/keys) 设置页面，点击“New SSH ”按钮。
+访问 [Github 的 SSH and GPG keys](https://github.com/settings/keys) 设置页面，点击“New SSH”按钮。
 
 ![add-ssh-key-in-github-key-settings](../../../../assets/images/git/add-ssh-key-in-github-key-settings.png)
 
@@ -68,5 +68,74 @@ ssh-rsa AA1AB2BB3CC4CD5DD……XX6XY7YY8ZZ9Z <你的邮箱地址>
 ![add-new-ssh-key-in-github](../../../../assets/images/git/add-new-ssh-key-in-github.png)
 
 
+## 0x03 修改 SSH 端口
 
-[等待完成修改为443端口的内容]
+即便完成上述设置后，在使用 git 时可能遇到此类报错：
+
+```bash
+ssh: connect to host github.com port 22: Connection timed out 
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights and the repository exists.
+```
+
+这是因为 SSH 的 22 端口连不上，需要改成 443 端口。
+
+=== "Windows"
+
+    在 Windows 下，SSH 配置文件（config）通常位于用户目录的 `.ssh` 文件夹中（例如：`C:\Users\darri\.ssh\config`）。
+    
+    ???+ note
+    
+        如果没有就创建一个。
+    
+    使用记事本或者 VS Code 打开，添加以下内容：
+
+    ```config
+    Host github.com
+        Hostname ssh.github.com
+        User git
+        Port 443
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/id_rsa
+    ```
+
+=== "Linux和MacOS"
+
+    SSH 的配置文件通常位于 `~/.ssh/config`，如果文件不存在，可以手动创建一个：
+
+    ```bash
+    touch ~/.ssh/config
+    ```
+
+    打开文件添加以下内容：
+
+    ```config
+    Host github.com
+        HostName ssh.github.com
+        User git
+        Port 443
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/id_rsa
+    ```
+
+现在来检测连接是否正常。在终端输入下面的指令：
+
+```bash
+ssh -T git@github.com
+```
+
+如果正确配置，终端将返回类似以下内容：
+
+```bash
+Hi darrindeyoung791! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+在终端执行下面的指令，确保 git 使用新端口：
+
+```bash
+git config --global url."ssh://git@ssh.github.com:443".insteadOf "ssh://git@github.com"
+```
+
+---
+本文完。
