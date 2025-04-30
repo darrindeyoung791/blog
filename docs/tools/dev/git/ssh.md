@@ -100,7 +100,7 @@ Please make sure you have the correct access rights and the repository exists.
         IdentityFile ~/.ssh/id_rsa
     ```
 
-=== "Linux和MacOS"
+=== "Linux 和 MacOS"
 
     SSH 的配置文件通常位于 `~/.ssh/config`，如果文件不存在，可以手动创建一个：
 
