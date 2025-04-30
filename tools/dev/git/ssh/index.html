@@ -824,6 +824,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#0x03-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      0x03 修改 SSH 端口
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1229,6 +1238,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#0x03-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      0x03 修改 SSH 端口
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1284,15 +1302,78 @@
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>cat<span class="w"> </span>id_rsa.pub
 </span></code></pre></div></td></tr></table></div>
 <p>此时会看到 SSH 公钥内容，格式如下：</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>ssh-rsa AA1AB2BB3CC4CD5DD……XX6XY7YY8ZZ9Z &lt;你的邮箱地址&gt;
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>ssh-rsa AA1AB2BB3CC4CD5DD……XX6XY7YY8ZZ9Z darrindeyoung@example.com
 </span></code></pre></div></td></tr></table></div>
 <p>用鼠标选择自 <code>ssh-rsa</code> 起至邮箱地址止（也就是全部内容）后右键（copy）复制。</p>
 <h2 id="0x02-github">0x02 在 Github 设置中输入公钥</h2>
-<p>访问 <a href="https://github.com/settings/keys">Github 的 SSH and GPG keys</a> 设置页面，点击“New SSH ”按钮。</p>
+<p>访问 <a href="https://github.com/settings/keys">Github 的 SSH and GPG keys</a> 设置页面，点击“New SSH”按钮。</p>
 <p><img alt="add-ssh-key-in-github-key-settings" src="../../../../assets/images/git/add-ssh-key-in-github-key-settings.png" /></p>
 <p>在 Title 处随便取个名字，然后在 Key 处粘贴之前复制的公钥，最后点 Add SSH key。</p>
 <p><img alt="add-new-ssh-key-in-github" src="../../../../assets/images/git/add-new-ssh-key-in-github.png" /></p>
-<p>[等待完成修改为443端口的内容]</p>
+<h2 id="0x03-ssh">0x03 修改 SSH 端口</h2>
+<p>即便完成上述设置后，在使用 git 时可能遇到此类报错：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>ssh:<span class="w"> </span>connect<span class="w"> </span>to<span class="w"> </span>host<span class="w"> </span>github.com<span class="w"> </span>port<span class="w"> </span><span class="m">22</span>:<span class="w"> </span>Connection<span class="w"> </span>timed<span class="w"> </span>out<span class="w"> </span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>fatal:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>remote<span class="w"> </span>repository.
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a>Please<span class="w"> </span>make<span class="w"> </span>sure<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>the<span class="w"> </span>correct<span class="w"> </span>access<span class="w"> </span>rights<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>repository<span class="w"> </span>exists.
+</span></code></pre></div></td></tr></table></div>
+<p>这是因为 SSH 的 22 端口连不上，需要改成 443 端口。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label><label for="__tabbed_2_2">Linux和MacOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>在 Windows 下，SSH 配置文件（config）通常位于用户目录的 <code>.ssh</code> 文件夹中（例如：<code>C:\Users\darri\.ssh\config</code>）。</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>如果没有就创建一个。</p>
+</details>
+<p>使用记事本或者 VS Code 打开，添加以下内容：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>Host github.com
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>    Hostname ssh.github.com
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>    User git
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>    Port 443
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>    PreferredAuthentications publickey
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>    IdentityFile ~/.ssh/id_rsa
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<p>SSH 的配置文件通常位于 <code>~/.ssh/config</code>，如果文件不存在，可以手动创建一个：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>touch<span class="w"> </span>~/.ssh/config
+</span></code></pre></div></td></tr></table></div>
+<p>打开文件添加以下内容：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>Host github.com
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>    HostName ssh.github.com
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>    User git
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>    Port 443
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>    PreferredAuthentications publickey
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>    IdentityFile ~/.ssh/id_rsa
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>现在来检测连接是否正常。在终端输入下面的指令：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>ssh<span class="w"> </span>-T<span class="w"> </span>git@github.com
+</span></code></pre></div></td></tr></table></div>
+<p>如果正确配置，终端将返回类似以下内容：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>Hi<span class="w"> </span>darrindeyoung791!<span class="w"> </span>You<span class="err">&#39;</span>ve<span class="w"> </span>successfully<span class="w"> </span>authenticated,<span class="w"> </span>but<span class="w"> </span>GitHub<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>provide<span class="w"> </span>shell<span class="w"> </span>access.
+</span></code></pre></div></td></tr></table></div>
+<p>在终端执行下面的指令，确保 git 使用新端口：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>url.<span class="s2">&quot;ssh://git@ssh.github.com:443&quot;</span>.insteadOf<span class="w"> </span><span class="s2">&quot;ssh://git@github.com&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<p>本文完。</p>
 
 
 
@@ -1315,7 +1396,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年4月29日 20:39:10">2025年4月29日 20:39:10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年4月30日 14:14:53">2025年4月30日 14:14:53</span>
   </span>
 
     
