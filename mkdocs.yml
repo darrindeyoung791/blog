@@ -7,6 +7,7 @@ copyright: Copyright &copy; 2025 <a href="https://github.com/darrindeyoung791" t
 
 theme:
   features:
+    - content.action.edit
     - navigation.instant
     - navigation.instant.progress
     - navigation.tabs
@@ -74,13 +75,14 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 plugins:
-  - search
+  - autorefs
   - git-revision-date-localized:
       type: datetime
       fallback_to_build_date: true
       enable_creation_date: true
       locale: zh
       timezone: Asia/Shanghai
+  - search
 
 nav:
   - 首页: 
