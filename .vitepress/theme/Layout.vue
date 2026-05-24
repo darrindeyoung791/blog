@@ -10,13 +10,17 @@ import Tags from './Tags.vue'
 const route = useRoute()
 const { Layout } = DefaultTheme
 
+// detect site base (client-side fallback) so homepage detection works when deployed under a subpath
+const siteBase = (typeof window !== 'undefined' && window.__VP_SITE_DATA__ && window.__VP_SITE_DATA__.base) || '/'
 const isBlogPost = computed(() => route.path.startsWith('/posts/'))
 const isTagsPage = computed(() => route.path === '/tags/')
 
+const isHomePath = (p: string) => p === '/' || p === siteBase || p === (siteBase.endsWith('/') ? siteBase.slice(0, -1) : siteBase)
+
 onMounted(() => {
-  document.documentElement.classList.toggle('is-homepage', route.path === '/')
+  document.documentElement.classList.toggle('is-homepage', isHomePath(route.path))
   watch(() => route.path, (path) => {
-    document.documentElement.classList.toggle('is-homepage', path === '/')
+    document.documentElement.classList.toggle('is-homepage', isHomePath(path))
   })
 })
 </script>
