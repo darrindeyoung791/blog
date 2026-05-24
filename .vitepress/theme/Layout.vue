@@ -5,11 +5,13 @@ import DefaultTheme from 'vitepress/theme'
 import Home from './Home.vue'
 import ArticleHeader from './Article.vue'
 import ArticleFooter from './ArticleFooter.vue'
+import Tags from './Tags.vue'
 
 const route = useRoute()
 const { Layout } = DefaultTheme
 
 const isBlogPost = computed(() => route.path.startsWith('/posts/'))
+const isTagsPage = computed(() => route.path === '/tags/')
 
 onMounted(() => {
   document.documentElement.classList.toggle('is-homepage', route.path === '/')
@@ -23,6 +25,7 @@ onMounted(() => {
   <Layout>
     <template #doc-before>
       <Home v-if="route.path === '/'" />
+      <Tags v-else-if="isTagsPage" />
       <ArticleHeader v-else-if="isBlogPost" />
     </template>
     <template #doc-after>

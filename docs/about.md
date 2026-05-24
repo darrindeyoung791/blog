@@ -3,6 +3,8 @@ title: 关于
 date: 2026-05-25
 layout: doc
 lastUpdated: true
+tags:
+  - 特殊页面
 ---
 
 # 关于
