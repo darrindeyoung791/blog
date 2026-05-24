@@ -6,7 +6,6 @@ import { data as posts } from './posts.data.js'
 const route = useRoute()
 
 const idx = computed(() => posts.findIndex((p) => p.url === route.path))
-const post = computed(() => posts[idx.value])
 const nextPost = computed(() => posts[idx.value - 1])
 const prevPost = computed(() => posts[idx.value + 1])
 </script>
@@ -20,14 +19,6 @@ const prevPost = computed(() => posts[idx.value + 1])
     <div v-if="prevPost" class="article-nav">
       <span class="nav-label">Previous Article</span>
       <a :href="prevPost.url" class="nav-link">{{ prevPost.title }}</a>
-    </div>
-    <div class="article-dates">
-      <span v-if="post?.firstEditTime" class="date-item">
-        最初编辑于 {{ post.firstEditTime.string }}
-      </span>
-      <span v-if="post?.lastEditTime" class="date-item">
-        最后更新于 {{ post.lastEditTime.string }}
-      </span>
     </div>
     <a href="/" class="back-link">← Back to the blog</a>
   </div>
@@ -60,16 +51,6 @@ const prevPost = computed(() => posts[idx.value + 1])
 }
 .nav-link:hover {
   color: var(--vp-c-brand-2);
-}
-.article-dates {
-  margin-top: 1.25rem;
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: var(--vp-c-text-3);
-  line-height: 1.6;
-}
-.date-item {
-  display: block;
 }
 .back-link {
   display: inline-block;
