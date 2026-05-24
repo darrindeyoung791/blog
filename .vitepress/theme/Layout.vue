@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, watch, onMounted } from 'vue'
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import Home from './Home.vue'
 import ArticleHeader from './Article.vue'
@@ -10,17 +10,25 @@ import Tags from './Tags.vue'
 const route = useRoute()
 const { Layout } = DefaultTheme
 
-// detect site base (client-side fallback) so homepage detection works when deployed under a subpath
-const siteBase = (typeof window !== 'undefined' && window.__VP_SITE_DATA__ && window.__VP_SITE_DATA__.base) || '/'
+// detect site base (server+client) so homepage detection works when deployed under a subpath
+const { site } = useData()
+const siteBaseClient = (typeof window !== 'undefined' && (window.__VP_SITE_DATA__ && window.__VP_SITE_DATA__.base)) || '/'
+const siteBase = computed(() => (site && site.value && site.value.base) ? site.value.base : siteBaseClient)
+
 const isBlogPost = computed(() => route.path.startsWith('/posts/'))
 const isTagsPage = computed(() => route.path === '/tags/')
 
-const isHomePath = (p: string) => p === '/' || p === siteBase || p === (siteBase.endsWith('/') ? siteBase.slice(0, -1) : siteBase)
+const isHome = computed(() => {
+  const p = route.path as string
+  const base = siteBase.value || '/'
+  const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
+  return p === '/' || p === base || p === normalizedBase
+})
 
 onMounted(() => {
-  document.documentElement.classList.toggle('is-homepage', isHomePath(route.path))
+  document.documentElement.classList.toggle('is-homepage', isHome.value)
   watch(() => route.path, (path) => {
-    document.documentElement.classList.toggle('is-homepage', isHomePath(path))
+    document.documentElement.classList.toggle('is-homepage', isHome.value)
   })
 })
 </script>
@@ -28,7 +36,7 @@ onMounted(() => {
 <template>
   <Layout>
     <template #doc-before>
-      <Home v-if="route.path === '/'" />
+      <Home v-if="isHome" />
       <Tags v-else-if="isTagsPage" />
       <ArticleHeader v-else-if="isBlogPost" />
     </template>

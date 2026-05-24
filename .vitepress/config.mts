@@ -8,6 +8,18 @@ export default defineConfig({
   cleanUrls: true,
   head: [
     ['link', { rel: 'icon', href: '/img/favicon.png' }],
+    // Fix for GitHub Pages build where VitePress emitted `rel="preload stylesheet"`.
+    // This script converts such links to proper preload+onload pattern so CSS is applied.
+    ['script', {}, `(() => {
+      try {
+        const links = Array.from(document.querySelectorAll('link[rel="preload stylesheet"]'));
+        for (const l of links) {
+          l.rel = 'preload';
+          l.as = 'style';
+          l.onload = function() { this.rel = 'stylesheet'; };
+        }
+      } catch (e) { /* ignore */ }
+    })()`]
   ],
   themeConfig: {
     logo: '/img/favicon.png',
