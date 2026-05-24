@@ -1,12 +1,40 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 import { data as posts } from './posts.data.js'
 import Date from './Date.vue'
 
+const { site } = useData()
+const siteBaseClient = (typeof window !== 'undefined' && (window.__VP_SITE_DATA__ && window.__VP_SITE_DATA__.base)) || '/'
+const siteBase = computed(() => (site && site.value && site.value.base) ? site.value.base : siteBaseClient)
+
+function withBase(href: string) {
+  if (!href || !href.startsWith('/')) return href
+  const base = siteBase.value || '/'
+  const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
+  return normalizedBase + href
+}
+
 const route = useRoute()
 
-const idx = computed(() => posts.findIndex((p) => p.url === route.path))
+const idx = computed(() => {
+  const p = route.path
+  // try exact match
+  let i = posts.findIndex((x) => x.url === p)
+  if (i !== -1) return i
+  // try removing site base if present
+  const base = siteBase.value || '/'
+  const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
+  if (normalizedBase !== '/' && p.startsWith(normalizedBase)) {
+    const stripped = p.slice(normalizedBase.length) || '/'
+    i = posts.findIndex((x) => x.url === stripped)
+    if (i !== -1) return i
+  }
+  // try matching with .html variant (static build)
+  const htmlPath = p.endsWith('/') ? p + 'index.html' : p + '.html'
+  i = posts.findIndex((x) => x.url === htmlPath)
+  return i
+})
 const post = computed(() => posts[idx.value])
 const date = computed(() => post.value?.date)
 const tags = computed(() => {
@@ -22,7 +50,7 @@ const tags = computed(() => {
       <a
         v-for="tag in tags"
         :key="tag"
-        :href="'/?tag=' + encodeURIComponent(tag)"
+        :href="withBase('/?tag=' + encodeURIComponent(tag))"
         class="article-tag"
       >{{ tag }}</a>
     </div>

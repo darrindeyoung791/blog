@@ -1,11 +1,35 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 import { data as posts } from './posts.data.js'
 
 const route = useRoute()
+const { site } = useData()
+const siteBaseClient = (typeof window !== 'undefined' && (window.__VP_SITE_DATA__ && window.__VP_SITE_DATA__.base)) || '/'
+const siteBase = computed(() => (site && site.value && site.value.base) ? site.value.base : siteBaseClient)
 
-const idx = computed(() => posts.findIndex((p) => p.url === route.path))
+function withBase(href: string) {
+  if (!href || !href.startsWith('/')) return href
+  const base = siteBase.value || '/'
+  const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
+  return normalizedBase + href
+}
+
+const idx = computed(() => {
+  const p = route.path
+  let i = posts.findIndex((x) => x.url === p)
+  if (i !== -1) return i
+  const base = siteBase.value || '/'
+  const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
+  if (normalizedBase !== '/' && p.startsWith(normalizedBase)) {
+    const stripped = p.slice(normalizedBase.length) || '/'
+    i = posts.findIndex((x) => x.url === stripped)
+    if (i !== -1) return i
+  }
+  const htmlPath = p.endsWith('/') ? p + 'index.html' : p + '.html'
+  i = posts.findIndex((x) => x.url === htmlPath)
+  return i
+})
 const nextPost = computed(() => posts[idx.value - 1])
 const prevPost = computed(() => posts[idx.value + 1])
 </script>
@@ -14,13 +38,13 @@ const prevPost = computed(() => posts[idx.value + 1])
   <div class="article-footer-area">
     <div v-if="nextPost" class="article-nav">
       <span class="nav-label">Next Article</span>
-      <a :href="nextPost.url" class="nav-link">{{ nextPost.title }}</a>
+      <a :href="withBase(nextPost.url)" class="nav-link">{{ nextPost.title }}</a>
     </div>
     <div v-if="prevPost" class="article-nav">
       <span class="nav-label">Previous Article</span>
-      <a :href="prevPost.url" class="nav-link">{{ prevPost.title }}</a>
+      <a :href="withBase(prevPost.url)" class="nav-link">{{ prevPost.title }}</a>
     </div>
-    <a href="/" class="back-link">← Back to the blog</a>
+    <a :href="withBase('/')" class="back-link">← Back to the blog</a>
   </div>
 </template>
 

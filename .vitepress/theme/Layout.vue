@@ -15,8 +15,18 @@ const { site } = useData()
 const siteBaseClient = (typeof window !== 'undefined' && (window.__VP_SITE_DATA__ && window.__VP_SITE_DATA__.base)) || '/'
 const siteBase = computed(() => (site && site.value && site.value.base) ? site.value.base : siteBaseClient)
 
-const isBlogPost = computed(() => route.path.startsWith('/posts/'))
-const isTagsPage = computed(() => route.path === '/tags/')
+const isBlogPost = computed(() => {
+  const p = route.path as string
+  const base = siteBase.value || '/'
+  const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
+  return p.startsWith('/posts/') || p.startsWith(normalizedBase + '/posts/')
+})
+const isTagsPage = computed(() => {
+  const p = route.path as string
+  const base = siteBase.value || '/'
+  const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
+  return p === '/tags/' || p === normalizedBase + '/tags/' || p === normalizedBase + '/tags'
+})
 
 const isHome = computed(() => {
   const p = route.path as string
