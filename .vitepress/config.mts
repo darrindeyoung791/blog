@@ -8,16 +8,40 @@ export default defineConfig({
   cleanUrls: true,
   head: [
     ['link', { rel: 'icon', href: '/img/favicon.png' }],
-    // Fix for GitHub Pages build where VitePress emitted `rel="preload stylesheet"`.
-    // This script converts such links to proper preload+onload pattern so CSS is applied.
+    // Robust fix for GH Pages: handle combined `rel="preload stylesheet"`,
+    // split `rel=preload as=style` (without onload), and stray `as` on stylesheet links.
     ['script', {}, `(() => {
       try {
-        const links = Array.from(document.querySelectorAll('link[rel="preload stylesheet"]'));
-        for (const l of links) {
+        // Handle combined rel="preload stylesheet"
+        const combo = Array.from(document.querySelectorAll('link[rel="preload stylesheet"]'));
+        for (const l of combo) {
           l.rel = 'preload';
           l.as = 'style';
           l.onload = function() { this.rel = 'stylesheet'; };
         }
+
+        // Handle split case: preload link for CSS that may lack onload; ensure stylesheet is applied
+        const preloads = Array.from(document.querySelectorAll('link[rel="preload"][as="style"]'));
+        for (const l of preloads) {
+          const href = l.getAttribute('href');
+          if (!l.onload) {
+            l.onload = function() { this.rel = 'stylesheet'; };
+          }
+          // If there's no corresponding stylesheet link (some hosts may split and NOT add it), create one
+          if (href) {
+            const hasSheet = document.querySelector('link[rel="stylesheet"][href="' + href + '"]');
+            if (!hasSheet) {
+              const nl = document.createElement('link');
+              nl.rel = 'stylesheet';
+              nl.href = href;
+              document.head.appendChild(nl);
+            }
+          }
+        }
+
+        // Clean up: remove invalid 'as' attributes from stylesheet links
+        const badSheets = Array.from(document.querySelectorAll('link[rel="stylesheet"][as]'));
+        for (const s of badSheets) s.removeAttribute('as');
       } catch (e) { /* ignore */ }
     })()`]
   ],
