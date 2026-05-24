@@ -2,10 +2,19 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   srcDir: 'docs',
-  title: 'Blog from darrindeyoung791 ',
+  title: 'Darrin\'s Blog',
   description: 'A VitePress blog',
   cleanUrls: true,
+  head: [
+    ['link', { rel: 'icon', href: '/img/favicon.png' }],
+  ],
   themeConfig: {
+    logo: '/img/favicon.png',
+    
+    nav: [
+      { text: '关于', link: '/about' },
+    ],
+
     search: {
       provider: 'local',
       options: {
@@ -48,5 +57,24 @@ export default defineConfig({
       message: '如无特殊说明，本站全部内容在 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" rel="noopener">CC-BY-SA 4.0</a> 协议之条款下提供',
       copyright: 'Copyright © 2026-present darrindeyoung791'
     },
+
+    returnToTopLabel: '回到顶部',
+
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇'
+    },
+
+    outline: {
+      label: '本文目录'
+    },
+
+    sidebarMenuLabel: '文档目录',
+
+    darkModeSwitchLabel: '主题',
+
+    lightModeSwitchTitle: '切换到浅色模式',
+
+    darkModeSwitchTitle: '切换到深色模式',
   }
 })

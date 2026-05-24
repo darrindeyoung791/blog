@@ -1,5 +1,6 @@
 import { createContentLoader } from 'vitepress'
 import { execSync } from 'node:child_process'
+import fs from 'node:fs'
 import path from 'node:path'
 
 interface Post {
@@ -8,36 +9,60 @@ interface Post {
   date: { time: number; string: string }
   author: string | undefined
   lastEditTime: { time: number; string: string } | undefined
-  excerpt: string | undefined
+  firstEditTime: { time: number; string: string } | undefined
+  frontmatter: Record<string, any>
 }
 
 declare const data: Post[]
 export { data }
 
+function extractExcerpt(filePath: string): string | undefined {
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8')
+    const body = content.replace(/---[\s\S]*?---/, '').trim()
+    const paragraphs = body.match(/^(?!\s*#)[^\n]+/m)
+    if (paragraphs) {
+      const text = paragraphs[0].trim()
+      return text.length > 200 ? text.slice(0, 200) + '…' : text
+    }
+  } catch {}
+  return undefined
+}
+
 export default createContentLoader('posts/*.md', {
-  excerpt: true,
   transform(raw): Post[] {
-    const posts = raw.map(({ url, frontmatter, excerpt }) => {
+    const posts = raw.map(({ url, frontmatter }) => {
       let lastEditTime: Post['lastEditTime'] = undefined
+      let firstEditTime: Post['firstEditTime'] = undefined
       try {
         const filePath = path.resolve('docs' + url + '.md')
-        const gitDate = execSync(
+        const lastDate = execSync(
           `git log -1 --format="%ai" -- "${filePath}"`,
           { encoding: 'utf-8', timeout: 5000 }
         ).trim()
-        if (gitDate) lastEditTime = formatDate(gitDate)
+        if (lastDate) lastEditTime = formatDate(lastDate)
+        const firstDate = execSync(
+          `git log --reverse --format="%ai" -- "${filePath}"`,
+          { encoding: 'utf-8', timeout: 5000 }
+        ).trim().split('\n')[0]
+        if (firstDate) firstEditTime = formatDate(firstDate)
       } catch {}
-
+      frontmatter.excerpt = extractExcerpt(path.resolve('docs' + url + '.md'))
       return {
         title: frontmatter.title,
         url,
         author: frontmatter.author,
         date: formatDate(frontmatter.date),
         lastEditTime,
-        excerpt
+        firstEditTime,
+        frontmatter,
       }
     })
-    return posts.sort((a, b) => b.date.time - a.date.time)
+    return posts.sort((a, b) => {
+      if (a.frontmatter.sticky && !b.frontmatter.sticky) return -1
+      if (!a.frontmatter.sticky && b.frontmatter.sticky) return 1
+      return b.date.time - a.date.time
+    })
   }
 })
 

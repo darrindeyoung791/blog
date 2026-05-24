@@ -1,12 +1,9 @@
 ---
 title: Hello World
 date: 2026-05-24
-author: darrindeyoung791
-github: darrindeyoung791
+sticky: true
 ---
 
-Welcome to my blog! This is my first post.
+# Hello World
 
-## Getting Started
-
-This blog is built with VitePress. Stay tuned for more content.
+本文为 Darrin's Blog 的第一篇文章。

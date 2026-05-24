@@ -18,8 +18,9 @@ const { frontmatter } = useData()
           <Date :date="post.date" />
           <h2 class="post-title">
             <a :href="post.url">{{ post.title }}</a>
+            <span v-if="post.frontmatter.sticky" class="sticky-badge">置顶</span>
           </h2>
-          <div v-if="post.excerpt" class="post-excerpt" v-html="post.excerpt"></div>
+          <div v-if="post.frontmatter.excerpt" class="post-excerpt" v-html="post.frontmatter.excerpt"></div>
           <a :href="post.url" class="read-more">Read more →</a>
         </article>
       </li>
@@ -72,10 +73,26 @@ const { frontmatter } = useData()
 .post-title a:hover {
   color: var(--vp-c-brand-1);
 }
+.sticky-badge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #fff;
+  background: var(--vp-c-brand-1);
+  border-radius: 3px;
+  vertical-align: middle;
+}
 .post-excerpt {
   color: var(--vp-c-text-2);
   font-size: 1rem;
   line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .post-excerpt :deep(p) {
   margin: 0;
