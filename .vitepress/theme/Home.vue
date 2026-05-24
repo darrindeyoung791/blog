@@ -5,7 +5,17 @@ import Date from './Date.vue'
 import { data as posts } from './posts.data.js'
 
 const route = useRoute()
-const { frontmatter } = useData()
+const { frontmatter, site } = useData()
+
+const siteBaseClient = (typeof window !== 'undefined' && (window.__VP_SITE_DATA__ && window.__VP_SITE_DATA__.base)) || '/'
+const siteBase = computed(() => (site && site.value && site.value.base) ? site.value.base : siteBaseClient)
+
+function withBase(href: string) {
+  if (!href || !href.startsWith('/')) return href
+  const base = siteBase.value || '/'
+  const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
+  return normalizedBase + href
+}
 
 const allTags = computed(() => {
   const set = new Set<string>()
@@ -30,7 +40,7 @@ const filteredPosts = computed(() => {
 })
 
 function tagHref(tag: string) {
-  return activeTag.value === tag ? '/' : '/?tag=' + encodeURIComponent(tag)
+  return withBase(activeTag.value === tag ? '/' : '/?tag=' + encodeURIComponent(tag))
 }
 </script>
 
@@ -44,7 +54,7 @@ function tagHref(tag: string) {
     <div v-if="allTags.length" class="tag-filter">
       <span class="tag-filter-label">筛选：</span>
       <a
-        :href="'/'"
+        :href="withBase('/')"
         class="tag-filter-item"
       >取消筛选</a>
       <a
@@ -65,23 +75,23 @@ function tagHref(tag: string) {
             <a
               v-for="tag in post.frontmatter.tags"
               :key="tag"
-              :href="'/?tag=' + encodeURIComponent(tag)"
+              :href="withBase('/?tag=' + encodeURIComponent(tag))"
               class="post-tag"
             >{{ tag }}</a>
           </div>
           <h2 class="post-title">
-            <a :href="post.url">{{ post.title }}</a>
+            <a :href="withBase(post.url)">{{ post.title }}</a>
             <span v-if="post.frontmatter.sticky" class="sticky-badge">置顶</span>
           </h2>
           <div v-if="post.frontmatter.excerpt" class="post-excerpt" v-html="post.frontmatter.excerpt"></div>
-          <a :href="post.url" class="read-more">Read more →</a>
+          <a :href="withBase(post.url)" class="read-more">Read more →</a>
         </article>
       </li>
     </ul>
 
     <p v-if="!filteredPosts.length" class="no-results">
       没有找到包含「{{ activeTag }}」标签的文章。
-      <a href="/">查看全部文章</a>
+      <a :href="withBase('/')">查看全部文章</a>
     </p>
   </div>
 </template>
