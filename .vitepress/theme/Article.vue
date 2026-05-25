@@ -50,7 +50,7 @@ const tags = computed(() => {
       <a
         v-for="tag in tags"
         :key="tag"
-        :href="withBase('/?tag=' + encodeURIComponent(tag))"
+        :href="withBase('/')"
         class="article-tag"
       >{{ tag }}</a>
     </div>

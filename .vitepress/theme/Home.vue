@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute, useData } from 'vitepress'
+import { useData } from 'vitepress'
 import Date from './Date.vue'
 import { data as posts } from './posts.data.js'
 
-const route = useRoute()
 const { frontmatter, site } = useData()
 
 const siteBaseClient = (typeof window !== 'undefined' && (window.__VP_SITE_DATA__ && window.__VP_SITE_DATA__.base)) || '/'
@@ -16,32 +15,6 @@ function withBase(href: string) {
   const normalizedBase = base.endsWith('/') ? base.slice(0, -1) : base
   return normalizedBase + href
 }
-
-const allTags = computed(() => {
-  const set = new Set<string>()
-  for (const post of posts) {
-    const tags = post.frontmatter.tags
-    if (Array.isArray(tags)) tags.forEach((t: string) => set.add(t))
-  }
-  return [...set].sort()
-})
-
-const activeTag = computed(() => {
-  const tag = route.query.tag
-  return typeof tag === 'string' ? tag : null
-})
-
-const filteredPosts = computed(() => {
-  if (!activeTag.value) return posts
-  return posts.filter(p => {
-    const tags = p.frontmatter.tags
-    return Array.isArray(tags) && tags.includes(activeTag.value)
-  })
-})
-
-function tagHref(tag: string) {
-  return withBase(activeTag.value === tag ? '/' : '/?tag=' + encodeURIComponent(tag))
-}
 </script>
 
 <template>
@@ -51,33 +24,16 @@ function tagHref(tag: string) {
       <p v-if="frontmatter.subtext" class="blog-subtext">{{ frontmatter.subtext }}</p>
     </div>
 
-    <div v-if="allTags.length" class="tag-filter">
-      <span class="tag-filter-label">筛选：</span>
-      <a
-        :href="withBase('/')"
-        class="tag-filter-item"
-      >取消筛选</a>
-      <a
-        v-for="tag in allTags"
-        :key="tag"
-        :href="tagHref(tag)"
-        class="tag-filter-item"
-        :class="{ active: activeTag === tag }"
-      >{{ tag }}</a>
-      <a v-if="activeTag" href="/" class="tag-filter-clear">× 清除</a>
-    </div>
-
     <ul class="post-list">
-      <li v-for="post of filteredPosts" :key="post.url" class="post-item">
+      <li v-for="post of posts" :key="post.url" class="post-item">
         <article>
           <Date :date="post.date" />
           <div v-if="post.frontmatter.tags?.length" class="post-tags">
-            <a
+            <span
               v-for="tag in post.frontmatter.tags"
               :key="tag"
-              :href="withBase('/?tag=' + encodeURIComponent(tag))"
               class="post-tag"
-            >{{ tag }}</a>
+            >{{ tag }}</span>
           </div>
           <h2 class="post-title">
             <a :href="withBase(post.url)">{{ post.title }}</a>
@@ -88,11 +44,6 @@ function tagHref(tag: string) {
         </article>
       </li>
     </ul>
-
-    <p v-if="!filteredPosts.length" class="no-results">
-      没有找到包含「{{ activeTag }}」标签的文章。
-      <a :href="withBase('/')">查看全部文章</a>
-    </p>
   </div>
 </template>
 
@@ -114,54 +65,6 @@ function tagHref(tag: string) {
   margin-top: 0.75rem;
   font-size: 1.125rem;
   color: var(--vp-c-text-2);
-}
-
-.tag-filter {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: var(--vp-c-bg-soft);
-}
-.tag-filter-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--vp-c-text-2);
-  white-space: nowrap;
-}
-.tag-filter-item {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--vp-c-text-2);
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 4px;
-  text-decoration: none;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
-}
-.tag-filter-item:hover {
-  color: var(--vp-c-brand-1);
-  border-color: var(--vp-c-brand-1);
-}
-.tag-filter-item.active {
-  color: #fff;
-  background: var(--vp-c-brand-1);
-  border-color: var(--vp-c-brand-1);
-}
-.tag-filter-clear {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-3);
-  text-decoration: none;
-  margin-left: auto;
-}
-.tag-filter-clear:hover {
-  color: var(--vp-c-brand-1);
 }
 
 .post-list {
@@ -244,13 +147,5 @@ function tagHref(tag: string) {
 }
 .read-more:hover {
   color: var(--vp-c-brand-2);
-}
-.no-results {
-  margin-top: 3rem;
-  text-align: center;
-  color: var(--vp-c-text-2);
-}
-.no-results a {
-  color: var(--vp-c-brand-1);
 }
 </style>

@@ -32,6 +32,17 @@ function extractExcerpt(filePath: string): string | undefined {
 export default createContentLoader('posts/*.md', {
   transform(raw): Post[] {
     const posts = raw.map(({ url, frontmatter }) => {
+      // normalize tags in frontmatter to simple trimmed strings
+      try {
+        if (Array.isArray(frontmatter.tags)) {
+          frontmatter.tags = frontmatter.tags.map((t: any) => {
+            if (t == null) return t
+            let s = String(t)
+            try { if (/%[0-9A-Fa-f]{2}/.test(s)) s = decodeURIComponent(s) } catch {}
+            return s.trim()
+          })
+        }
+      } catch {}
       let lastEditTime: Post['lastEditTime'] = undefined
       let firstEditTime: Post['firstEditTime'] = undefined
       try {

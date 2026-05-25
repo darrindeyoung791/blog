@@ -34,7 +34,7 @@ const tags = computed<TagEntry[]>(() => {
       <a
         v-for="tag in tags"
         :key="tag.name"
-        :href="'/?tag=' + encodeURIComponent(tag.name)"
+        :href="'/'"
         class="tag-cloud-item"
         :style="{ fontSize: Math.max(0.85, Math.min(1.6, 0.7 + tag.count * 0.2)) + 'rem' }"
       >{{ tag.name }}<sup class="tag-count">{{ tag.count }}</sup></a>
