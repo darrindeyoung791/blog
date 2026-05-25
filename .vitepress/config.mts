@@ -1,13 +1,15 @@
 import { defineConfig } from 'vitepress'
 
+const base = '/blog/'
+
 export default defineConfig({
-  base: '/blog/',
+  base,
   srcDir: 'docs',
   title: 'Darrin\'s Blog',
   description: 'A VitePress blog',
   cleanUrls: true,
   head: [
-    ['link', { rel: 'icon', href: '/img/favicon.png' }],
+    ['link', { rel: 'icon', href: base + 'img/favicon.png' }],
     // Robust fix for GH Pages: handle combined `rel="preload stylesheet"`,
     // split `rel=preload as=style` (without onload), and stray `as` on stylesheet links.
     ['script', {}, `(() => {
