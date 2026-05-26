@@ -1,7 +1,6 @@
 ---
 title: Hello World
 date: 2026-05-24
-sticky: true
 tags:
   - 通知
   - 特殊页面
