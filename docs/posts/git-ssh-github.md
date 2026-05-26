@@ -22,7 +22,7 @@ tags:
 
 打开 Git Bash。
 
-![git-bash-in-windows-search-result](/img/git-bash-in-windows-search-result.png)
+![git-bash-in-windows-search-result](/img/git-bash-in-windows-search-result.webp)
 
 先输入下面的指令查看有没有已经创建的 SSH key
 
@@ -67,11 +67,11 @@ ssh-rsa AA1AB2BB3CC4CD5DD……XX6XY7YY8ZZ9Z darrindeyoung@example.com
 
 访问 [Github 的 SSH and GPG keys](https://github.com/settings/keys) 设置页面，点击"New SSH"按钮。
 
-![add-ssh-key-in-github-key-settings](/img/add-ssh-key-in-github-key-settings.png)
+![add-ssh-key-in-github-key-settings](/img/add-ssh-key-in-github-key-settings.webp)
 
 在 Title 处随便取个名字，然后在 Key 处粘贴之前复制的公钥，最后点 Add SSH key。
 
-![add-new-ssh-key-in-github](/img/add-new-ssh-key-in-github.png)
+![add-new-ssh-key-in-github](/img/add-new-ssh-key-in-github.webp)
 
 ## 修改 SSH 端口
 
