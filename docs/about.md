@@ -20,7 +20,7 @@ Darrin's Blog 用于存放 darrindeyoung791 的所思所想。
 
 ## 关于 darrindeyoung791
 
-普通人。
+普通人。[HabitPulse](https://darrindeyoung791.github.io/HabitPulse/) 开发者。
 
 名字来源 [在此](https://devblogs.microsoft.com/oldnewthing/20201013-00/?p=104364)。
 
