@@ -1,0 +1,11 @@
+.vp-doc a {
+    text-decoration: none;
+}
+
+.medium-zoom-overlay {
+  z-index: calc(var(--vp-z-index-nav) + 1);
+}
+
+.medium-zoom-image--opened {
+  z-index: 2147483647 !important;
+}
