@@ -17,6 +17,8 @@ Darrin's Blog 用于存放 darrindeyoung791 的所思所想。
 
 如无特殊说明，本站全部内容在 [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en) 协议之条款下提供。
 
+使用了来自 Google 的 Material Symbols。
+
 
 ## 关于 darrindeyoung791
 
