@@ -55,7 +55,7 @@ function withBase(href: string) {
   margin-bottom: 2rem;
 }
 .blog-title {
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -65,6 +65,7 @@ function withBase(href: string) {
   margin-top: 0.75rem;
   font-size: 1.125rem;
   color: var(--vp-c-text-2);
+  margin-bottom: 4rem;
 }
 
 .post-list {

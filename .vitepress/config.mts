@@ -48,9 +48,10 @@ export default defineConfig({
     })()`]
   ],
   themeConfig: {
-    logo: '/img/favicon.png',
+    logo: { light: '/img/favicon-light.svg', dark: '/img/favicon-dark.svg' },
     
     nav: [
+      { text: '主页', link: '/' },
       { text: '关于', link: '/about' },
     ],
 
